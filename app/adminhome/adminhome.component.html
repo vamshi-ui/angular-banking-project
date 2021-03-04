@@ -1,0 +1,22 @@
+<!-- component -->
+<div class="flex flex-wrap">
+    <div class="bg-white shadow  my-2 w-64 flex-auto">
+      <ul class="list-reset my-28">
+        <li >
+          <a  (click)="users()" class="block p-4 text-grey-darker font-bold border-gray-lighter hover:border-purple-700 hover:bg-gray-300 border-r-4">Users</a>
+        </li>
+        <li >
+          <a  (click)="transactions()" class="block p-4 text-grey-darker font-bold border-gray-lighter hover:border-purple-700 hover:bg-gray-300 border-r-4">Transactions</a>
+        </li>
+        <li >
+          <a  (click)="delete()" class="block p-4 text-grey-darker font-bold border-gray-lighter hover:border-purple-700 hover:bg-gray-300 border-r-4">Delete</a>
+        </li>
+        <li >
+          <a (click)="logout()" class="block p-4 text-grey-darker font-bold border-gray-lighter hover:border-purple-700 hover:bg-gray-300 border-r-4">Logout</a>
+        </li>
+      </ul>
+    </div>
+    <div class="flex-auto">
+    <router-outlet></router-outlet>
+    </div>
+    </div>

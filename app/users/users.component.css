@@ -1,0 +1,17 @@
+
+input[type="button"]{
+    cursor: pointer;
+}
+
+@media(min-width:1024px){
+h1{
+    margin: 50px auto;
+
+}
+table{
+    margin: 100px auto;
+}
+body{
+    height: 470px;
+}
+}

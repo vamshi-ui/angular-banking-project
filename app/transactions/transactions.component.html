@@ -1,0 +1,126 @@
+<body>
+<label class="block text-center ">
+    <h1 class="text-blue-700  font-black" id="spar">Select A/c no to see Transaction History</h1>
+    <select [(ngModel)]="acno" (change)="getDepositInfoAndTransferInfo();"
+     class="form-select block w-64 mt-1 border-solid border-8 border-yellow-900">
+     <option value=null>----Select User Accno----</option>
+     <option *ngFor="let ano of accountnos">{{ano}}</option>
+    </select>
+  </label>
+
+<div *ngIf="depositInfo[0]!=undefined">
+<h2 class=" text-center text-dark py-2 text-2xl font-bold">Deposit Information</h2>
+<table class="border-collapse w-full">
+  <thead>
+      <tr>
+          <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Accno</th>
+          <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Name</th>
+          <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Mobileno</th>
+          <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Email</th>
+          <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Depositamount</th>
+          <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Deposit Date</th>
+        </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let d of depositInfo" class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
+          <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+              <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Accno</span>
+              <span class="rounded bg-green-400 py-1 px-3 text-xs font-bold">{{d.accno}}</span>
+          </td>
+          <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+              <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Name</span>
+              <span class="rounded bg-red-400 py-1 px-3 text-xs font-bold">{{d.name}}</span>
+          </td>
+          <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+              <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Mobileno</span>
+              <span class="rounded bg-green-400 py-1 px-3 text-xs font-bold">{{d.mobileno}}</span>
+          </td>
+          <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+              <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Email</span>
+              <span class="rounded bg-red-400 py-1 px-3 text-xs font-bold">{{d.email}}</span>
+              
+          </td>
+          <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+            <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Depositamount</span>
+            <span class="rounded bg-green-400 py-1 px-3 text-xs font-bold">{{d.depositamount}}</span>
+        </td>
+        <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+          <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Deposit Date</span>
+          <span class="rounded bg-red-400 py-1 px-3 text-xs font-bold">{{d.datetime}}</span>
+      </td>
+      </tr>
+     
+  </tbody>
+</table>
+</div>
+<div *ngIf="moneyTransferInfo[0]!=undefined">
+<h2 class="text-center text-dark py-2 text-2xl font-bold">Transfer Information</h2>
+<table class="border-collapse w-full">
+  <thead>
+      <tr>
+          <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Sender Accno</th>
+          <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Sender Name</th>
+          <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Sender Mobileno</th>
+          <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Sender Email</th>
+          <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Transfer Amount</th>
+          <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Receiver Accno</th>
+          <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Receiver Name</th>
+          <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Receiver Mobileno</th>
+          <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Receiver Email</th>
+          <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Transfer Date</th>
+
+        </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let t of moneyTransferInfo" class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
+          <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+              <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Sender Accno</span>
+              <span class="rounded bg-red-400 py-1 px-3 text-xs font-bold">{{t.saccno}}</span>
+          </td>
+          <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+              <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Sender Name</span>
+              <span class="rounded bg-green-400 py-1 px-3 text-xs font-bold">{{t.sname}}</span>
+          </td>
+          <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+              <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Sender Mobileno</span>
+              <span class="rounded bg-red-400 py-1 px-3 text-xs font-bold">{{t.smobileno}}</span>
+          </td>
+          <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+              <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Sender Email</span>
+              <span class="rounded bg-green-400 py-1 px-3 text-xs font-bold">{{t.semail}}</span>
+              
+          </td>
+          <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+            <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Transfer Amount</span>
+            <span class="rounded bg-red-400 py-1 px-3 text-xs font-bold">{{t.transferamount}}</span>
+        </td>
+          <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+            <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Receiver Accno</span>
+            <span class="rounded bg-green-400 py-1 px-3 text-xs font-bold">{{t.raccno}}</span>
+        </td>
+        <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+          <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Receiver Name</span>
+          <span class="rounded bg-red-400 py-1 px-3 text-xs font-bold">{{t.rname}}</span>
+      </td>
+      <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+        <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Receiver Mobileno</span>
+        <span class="rounded bg-green-400 py-1 px-3 text-xs font-bold">{{t.rmobileno}}</span>
+        
+    </td>
+    <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+      <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Receiver Email</span>
+      <span class="rounded bg-red-400 py-1 px-3 text-xs font-bold">{{t.remail}}</span>
+      
+  </td>
+  <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+    <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Transfer Date</span>
+    <span class="rounded bg-green-400  text-xs font-bold">{{t.datetime}}</span>
+    
+</td>
+
+      </tr>
+     
+  </tbody>
+</table>
+</div>
+</body>

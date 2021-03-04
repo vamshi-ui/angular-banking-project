@@ -1,0 +1,41 @@
+<h1 class="text-center text-green-900 border-b-8  border-red-700 text-2xl font-bold">welcome {{name}}</h1>
+
+<body class="flex h-screen bg-indigo-700">
+    <div class="w-full max-w-xs m-auto bg-indigo-100 rounded p-5">
+        <h1 class="text-center text-indigo-700 font-black">Deposit Your Money</h1>
+  <!-- header -->
+  <header>
+    <img class="w-20 mx-auto mb-5" src="https://www.pngarts.com/files/6/Blue-Bank-PNG-Image-Background.png" />
+  </header> 
+
+  <p class="text-center text-indigo-700 font-semibold">your money is safe with us even after "DECADES".</p>
+   
+ <!-- form -->
+ <form action="#" method="POST" (submit)="depositAmount()">
+    <div>
+     <label class="block mb-2 text-indigo-500" for="Amount">Amount</label>
+     <input class="w-full p-2 mb-6 text-indigo-700 border-b-2 border-indigo-500 outline-none focus:bg-gray-300" type="text" [(ngModel)]="amount" id="amount" name="amount">
+   </div>  
+
+   <div>          
+    <input class="w-full bg-indigo-700 hover:bg-pink-700 text-white font-bold py-2 px-4 mb-6 rounded" type="submit">
+  </div>  
+
+   </form> 
+</div>
+
+
+
+</body>
+
+<div *ngIf="showalert" class="alert-toast fixed bottom-0 right-0 m-8 w-5/6 md:w-full max-w-sm z-50">
+    <input type="checkbox" class="hidden" id="footertoast">
+
+    <label class="close cursor-pointer flex items-start justify-between w-full p-2 bg-red-700 h-24 rounded shadow-lg text-white" title="close" for="footertoast">
+     {{msg}}
+    
+      <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+        <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+      </svg>
+    </label>
+  </div>

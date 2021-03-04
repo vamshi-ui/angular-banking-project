@@ -1,0 +1,71 @@
+<body>
+<h1 class="text-center text-dark text-2xl font-bold">Account Holders Information</h1>
+
+  <table class="border-collapse w-full">
+    <thead>
+        <tr>
+            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell"> Accno</th>
+            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell"> Name</th>
+            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell"> Gender</th>
+            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell"> Mobileno</th>
+            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Email</th>
+            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Balance</th>
+            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">State</th>
+            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">City</th>
+            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Permission</th>  
+          </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users" class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
+            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase"> Accno</span>
+                <span class="rounded bg-yellow-400 py-1 px-3 text-xs font-bold">{{user.accno}}</span>
+            </td>
+            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase"> Name</span>
+                <span class="rounded bg-yellow-400 py-1 px-3 text-xs font-bold">{{user.name}}</span>
+            </td>
+            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase"> Gender</span>
+                <span class="rounded bg-yellow-400 py-1 px-3 text-xs font-bold">{{user.gender}}</span>
+            </td>
+            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase"> Mobileno</span>
+                <span class="rounded bg-yellow-400 py-1 px-3 text-xs font-bold">{{user.mobileno}}</span>
+                
+            </td>
+            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+              <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Email</span>
+              <span class="rounded bg-yellow-400 py-1 px-3 text-xs font-bold">{{user.email}}</span>
+          </td>
+            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+              <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Balance</span>
+              <span class="rounded bg-yellow-400 py-1 px-3 text-xs font-bold">{{user.balance}}</span>
+          </td>
+          <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+            <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">State</span>
+            <span class="rounded bg-yellow-400 py-1 px-3 text-xs font-bold">{{user.state}}</span>
+        </td>
+        <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+          <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">City</span>
+          <span class="rounded bg-yellow-400 py-1 px-3 text-xs font-bold">{{user.city}}</span>
+          
+      </td>
+      <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+        <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Permission</span>
+        <span class="rounded bg-red-400 py-1 px-3 text-xs font-bold" *ngIf="user.permission=='true';else notpermission">
+          Permission Granted
+              </span>
+              <ng-template #notpermission>
+                  <input type="button" title="grant permission for login" class="text-white bg-indigo-800 px-2 py-1 hover:bg-teal-900 font-semibold lowercase duration-700" value="Permission Not Granted" (click)="permissionChecking(user.accno)"/>
+              </ng-template>
+          
+        
+    </td>
+   
+  
+        </tr>
+       
+    </tbody>
+  </table>
+</body>

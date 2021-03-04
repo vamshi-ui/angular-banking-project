@@ -1,0 +1,84 @@
+<body>
+<label class="block text-center ">
+    <h1 class="text-blue-700 font-black">Select A/c no to Delete</h1>
+    <select [(ngModel)]="acno" (change)="getUser();"
+     class="form-select block w-64 mt-1 border-solid border-8 border-yellow-900">
+     <option value="">----Select User Accno----</option>
+     <option *ngFor="let ano of accountnos">{{ano}}</option>
+    </select>
+  </label>
+ 
+<div *ngIf="user!=null">
+  <table class="border-collapse w-full">
+    <thead>
+        <tr>
+            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell"> Accno</th>
+            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell"> Name</th>
+            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell"> Gender</th>
+            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell"> Mobileno</th>
+            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Email</th>
+            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Balance</th>
+            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">State</th>
+            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">City</th>
+            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Delete</th>  
+          </tr>
+    </thead>
+    <tbody>
+        <tr  class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
+            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase"> Accno</span>
+                <span class="rounded bg-green-400 py-1 px-3 text-xs font-bold">{{user.accno}}</span>
+            </td>
+            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase"> Name</span>
+                <span class="rounded bg-green-400 py-1 px-3 text-xs font-bold">{{user.name}}</span>
+            </td>
+            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase"> Gender</span>
+                <span class="rounded bg-green-400 py-1 px-3 text-xs font-bold">{{user.gender}}</span>
+            </td>
+            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase"> Mobileno</span>
+                <span class="rounded bg-green-400 py-1 px-3 text-xs font-bold">{{user.mobileno}}</span>
+                
+            </td>
+            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+              <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Email</span>
+              <span class="rounded bg-green-400 py-1 px-3 text-xs font-bold">{{user.email}}</span>
+          </td>
+            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+              <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Balance</span>
+              <span class="rounded bg-green-400 py-1 px-3 text-xs font-bold">{{user.balance}}</span> 
+          </td>
+          <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+            <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">State</span>
+            <span class="rounded bg-green-400 py-1 px-3 text-xs font-bold">{{user.state}}</span>
+        </td>
+        <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+          <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">City</span>
+          <span class="rounded bg-green-400 py-1 px-3 text-xs font-bold">{{user.city}}</span>
+          
+      </td>
+      <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+        <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Delete</span>
+        <span class="rounded bg-red-400 py-1 px-3 text-xs font-bold">
+          <a (click)="deleteUser(user.accno,user.email)" title="delete a/c no permenantly" >Delete</a>
+          </span>   
+    </td>
+     </tr>
+    </tbody>
+  </table>
+</div>
+
+  <div *ngIf="showalert" class="alert-toast fixed bottom-0 right-0 m-8 w-5/6 md:w-full max-w-sm z-50">
+    <input type="checkbox" class="hidden" id="footertoast">
+
+    <label class="close cursor-pointer flex items-start justify-between w-full p-2 bg-red-700 h-24 rounded shadow-lg text-white" title="close" for="footertoast">
+     {{msg}}
+    
+      <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+        <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+      </svg>
+    </label>
+  </div>
+</body>

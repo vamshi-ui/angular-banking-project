@@ -1,0 +1,57 @@
+
+<h1 class="text-center text-dark text-2xl font-bold">TRANSFER MONEY</h1>
+<main>
+    <div class="bg-gray-300 p-16">
+      <div class="bg-white rounded-lg shadow-md">
+        <div class="p-4 border-b">
+          <div class="text-gray-500 font-medium py-1">A/C No</div>
+            <input class="font-bold border-solid w-100  border-yellow-900 border-2" type="text" [(ngModel)]="revAccno" id="revAccno" name="revAccno" (blur)="getData()"/>
+            <div class="font-bold"></div>
+        </div>
+        <div class="p-4 border-b">
+          <div class="text-gray-500 font-medium py-1">Name</div>
+            <input class="font-bold border-solid w-100 border-yellow-900 border-2"  type="text" [(ngModel)]="revName" id="revName" name="revName" readonly />
+            <div class="font-bold"></div>
+        </div>
+        
+        <div class="p-4">
+          <div class="text-gray-500 font-medium py-1">Mobileno</div>
+          <div class="font-bold">
+            <input class="font-bold border-solid w-100 border-yellow-900 border-2"  [(ngModel)]="revMobileno" id="revMobileno" name="revMobileno" readonly />
+          </div>
+        </div>
+
+        <div class="p-4 border-b">
+          <div class="text-gray-500 font-medium py-1">Email Address</div>
+            <input class="font-bold border-solid w-100 border-yellow-900 border-2"  type="text" [(ngModel)]="revEmail" id="revEmail" name="revEmail" readonly/>
+            <div class="font-bold"></div>
+        </div>
+        <div class="p-4">
+          <div class="text-gray-500 font-medium py-1">Amount</div>
+          <div class="font-bold">
+            <input class="font-bold border-solid w-100 border-yellow-900 border-2" type="text" [(ngModel)]="amount" id="amount" name="amount"/>
+          </div>
+        </div>
+      </div>
+        
+      <div>
+        <button  (click)="transferAmount()" class="uppercase bg-gray-800 text-white w-full rounded-lg pt-4 pb-4 mt-4 font-bold tracking-wider text-sm shadow-md">
+          Transfer Money
+        </button>
+      </div>
+    </div>
+  </main>
+
+
+
+  <div *ngIf="showalert" class="alert-toast fixed bottom-0 right-0 m-8 w-5/6 md:w-full max-w-sm z-50">
+    <input type="checkbox" class="hidden" id="footertoast">
+
+    <label class="close cursor-pointer flex items-start justify-between w-full p-2 bg-red-700 h-24 rounded shadow-lg text-white" title="close" for="footertoast">
+     {{msg}}
+    
+      <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+        <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+      </svg>
+    </label>
+  </div>

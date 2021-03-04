@@ -1,0 +1,112 @@
+<h1 class="text-center text-dark text-2xl font-bold">INDIAN BANK REGISTRATION FORM</h1>
+<main>
+    <div class="bg-gray-300 p-8">
+      <div class="bg-white rounded-lg shadow-md">
+        <div class="p-4 border-b">
+          <div class="text-gray-500 font-medium py-1">A/C No:</div>
+            <input class="font-bold border-solid w-4/12  border-yellow-900 border-2" type="text" readonly  [(ngModel)]="accno" id="accno" name="accno" />
+            <div class="font-bold"></div>
+        </div>
+        <div class="p-4 border-b">
+          <div class="text-gray-500 font-medium py-1">Your Name</div>
+            <input class="font-bold border-solid w-4/12 border-yellow-900 border-2" placeholder="John Doe" type="text" [(ngModel)]="name" id="name" name="name" />
+            <div class="font-bold"></div>
+        </div>
+        <div class="p-4 border-b">
+
+        <div class="block">
+          <span class="text-gray-700 py-1">Gender</span>
+          <div class="mt-2">
+            <div>
+              <label class="inline-flex items-center">
+                <input type="radio" [(ngModel)]="gender" id="gender" name="gender" value="male" class="form-radio"  checked>
+                <span class="ml-2">male</span>
+              </label>
+            </div>
+            <div>
+              <label class="inline-flex items-center">
+                <input type="radio" [(ngModel)]="gender" id="gender" name="gender" value="female"  class="form-radio">
+                <span class="ml-2">female</span>
+              </label>
+            </div>
+            <div>
+              <label class="inline-flex items-center">
+                <input type="radio" class="form-radio" [(ngModel)]="gender" id="gender" name="gender" value="others">
+                <span class="ml-2">others</span>
+              </label>
+            </div> 
+          </div>
+        </div>
+        </div>
+
+        <div class="p-4">
+          <div class="text-gray-500 font-medium py-1">Mobileno</div>
+          <div class="font-bold">
+            <input type="text" class="font-bold border-solid w-4/12 border-yellow-900 border-2" [(ngModel)]="mobileno" id="mobileno" name="mobileno" placeholder="Ex:7893850563" />
+          </div>
+        </div>
+
+        <div class="p-4 border-b">
+          <div class="text-gray-500 font-medium py-1">Email Address</div>
+            <input class="font-bold border-solid w-4/12 border-yellow-900 border-2" placeholder="johndoe@email.com" type="text" [(ngModel)]="email" id="email" name="email" />
+            <div class="font-bold"></div>
+        </div>
+        <div class="p-4">
+          <div class="text-gray-500 font-medium py-1">Balance</div>
+          <div class="font-bold">
+            <input class="font-bold border-solid w-4/12 border-yellow-900 border-2" type="text" [(ngModel)]="balance" id="balance" name="balance" />
+          </div>
+        </div>
+
+         <div class="p-4">
+          <div class="text-gray-500 font-medium py-1">State</div>
+          <div class="font-bold">
+            <label class="block">
+              <select [(ngModel)]="state" id="state" name="state" (change)="getCities(state);"
+               class="form-select block w-4/12 mt-1 border-solid border-8 border-yellow-900">
+               <option value="---------Select State---------">---------Select State---------</option>
+               <option value="Andhra Pradesh">Andhra Pradesh</option>
+               <option value="Telangana">Telangana</option>
+               <option value="Tamilnadu">Tamilnadu</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+         <div class="p-4">
+          <div class="text-gray-500 font-medium py-1">City</div>
+          <div class="font-bold">
+            <label class="block">
+              <select [(ngModel)]="city" id="city" name="city"
+               class="form-select block w-4/12 mt-1 border-solid border-8 border-yellow-900">
+               <option value="---------Select City---------">---------Select City---------</option>
+               <option *ngFor="let ci of cities">{{ci}}</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+
+      </div>
+        
+      <div>
+        <button (click)="userRegister()" class="uppercase bg-gray-800 text-white w-full rounded-lg pt-4 pb-4 mt-4 font-bold tracking-wider text-sm shadow-md">
+          Create Account
+        </button>
+      </div>
+    </div>
+  </main>
+
+
+
+  <div *ngIf="showalert" class="alert-toast fixed bottom-0 right-0 m-8 w-5/6 md:w-full max-w-sm z-50">
+    <input type="checkbox" class="hidden" id="footertoast">
+
+    <label class="close cursor-pointer flex items-start justify-between w-full p-2 bg-red-700 h-24 rounded shadow-lg text-white" title="close" for="footertoast">
+     {{result}}
+    
+      <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+        <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+      </svg>
+    </label>
+  </div>
